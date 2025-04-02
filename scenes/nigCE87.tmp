@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://u1x8ha0kn822"]
+
+[ext_resource type="Texture2D" uid="uid://bho5p2dymnjb5" path="res://assets/office.png" id="1_13f7r"]
+[ext_resource type="Texture2D" uid="uid://d0yuknft3e844" path="res://assets/bg.png" id="1_ncv6x"]
+[ext_resource type="Script" path="res://scripts/night.gd" id="1_qlrxd"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="2_wwioo"]
+[ext_resource type="Script" path="res://scripts/pan_left.gd" id="3_w1qng"]
+[ext_resource type="Texture2D" uid="uid://b5vmalf33urtb" path="res://assets/Doorleft.png" id="3_y6qpk"]
+[ext_resource type="Script" path="res://scripts/pan_right.gd" id="4_7cdjt"]
+[ext_resource type="Texture2D" uid="uid://d3rfjy1pn27lo" path="res://assets/Doorright.png" id="4_haet6"]
+[ext_resource type="Texture2D" uid="uid://blwg8gwr84lf" path="res://assets/vent.png" id="6_tr050"]
+[ext_resource type="Texture2D" uid="uid://uju3df2jth1k" path="res://assets/camerasBackground.png" id="10_gn17f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2gmv"]
+size = Vector2(195, 521.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x53x2"]
+size = Vector2(181.25, 510)
+
+[node name="Night" type="Node2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_qlrxd")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-1.25, 1.52588e-05)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_ncv6x")
+offset = Vector2(433, 249)
+
+[node name="Office" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 0)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_13f7r")
+offset = Vector2(433, 249)
+
+[node name="DoorLeft" type="Sprite2D" parent="."]
+position = Vector2(541.25, 311)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("3_y6qpk")
+
+[node name="DoorRight" type="Sprite2D" parent="."]
+position = Vector2(541.25, 311.25)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("4_haet6")
+
+[node name="Vent" type="Sprite2D" parent="."]
+position = Vector2(541.25, 311.25)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("6_tr050")
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(0, 30)
+anchor_mode = 0
+script = ExtResource("2_wwioo")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="CameraPanLeft" type="CharacterBody2D" parent="GUI"]
+scale = Vector2(0.8, 0.8)
+input_pickable = true
+
+[node name="PanLeft" type="CollisionShape2D" parent="GUI/CameraPanLeft"]
+position = Vector2(88.75, 285)
+shape = SubResource("RectangleShape2D_h2gmv")
+debug_color = Color(0.218467, 0.567641, 0.793432, 0.42)
+script = ExtResource("3_w1qng")
+
+[node name="CameraPanRight" type="CharacterBody2D" parent="GUI"]
+input_pickable = true
+
+[node name="PanRight" type="CollisionShape2D" parent="GUI/CameraPanRight"]
+position = Vector2(530, 224)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_x53x2")
+script = ExtResource("4_7cdjt")
+
+[node name="Cameras" type="CanvasLayer" parent="GUI"]
+
+[node name="CamerasBackground" type="Sprite2D" parent="GUI/Cameras"]
+position = Vector2(300.35, 602)
+scale = Vector2(0.695958, 0.807631)
+texture = ExtResource("10_gn17f")
+
+[connection signal="mouse_entered" from="GUI/CameraPanLeft" to="GUI/CameraPanLeft/PanLeft" method="_on_camera_pan_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/CameraPanLeft" to="GUI/CameraPanLeft/PanLeft" method="_on_camera_pan_mouse_exited"]
+[connection signal="mouse_entered" from="GUI/CameraPanRight" to="GUI/CameraPanRight/PanRight" method="_on_camera_pan_right_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/CameraPanRight" to="GUI/CameraPanRight/PanRight" method="_on_camera_pan_right_mouse_exited"]

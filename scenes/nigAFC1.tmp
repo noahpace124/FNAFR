@@ -1,0 +1,389 @@
+[gd_scene load_steps=45 format=3 uid="uid://u1x8ha0kn822"]
+
+[ext_resource type="Texture2D" uid="uid://bho5p2dymnjb5" path="res://assets/office.png" id="1_13f7r"]
+[ext_resource type="Texture2D" uid="uid://d0yuknft3e844" path="res://assets/bg.png" id="1_ncv6x"]
+[ext_resource type="Script" path="res://scripts/night.gd" id="1_qlrxd"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="2_wwioo"]
+[ext_resource type="Script" path="res://scripts/pan_left.gd" id="3_w1qng"]
+[ext_resource type="Texture2D" uid="uid://b5vmalf33urtb" path="res://assets/Doorleft.png" id="3_y6qpk"]
+[ext_resource type="Script" path="res://scripts/pan_right.gd" id="4_7cdjt"]
+[ext_resource type="Texture2D" uid="uid://d3rfjy1pn27lo" path="res://assets/Doorright.png" id="4_haet6"]
+[ext_resource type="Texture2D" uid="uid://blwg8gwr84lf" path="res://assets/vent.png" id="6_tr050"]
+[ext_resource type="Texture2D" uid="uid://uju3df2jth1k" path="res://assets/camerasBackground.png" id="10_gn17f"]
+[ext_resource type="Texture2D" uid="uid://dxauvrk11epuf" path="res://assets/Cam1.png" id="11_wbvyc"]
+[ext_resource type="Texture2D" uid="uid://de1gj1kaweimt" path="res://assets/Cam2.png" id="12_ttil4"]
+[ext_resource type="Script" path="res://scripts/map.gd" id="12_u1yhb"]
+[ext_resource type="Texture2D" uid="uid://bnhk20mt03ah1" path="res://assets/Cam3.png" id="13_ksymc"]
+[ext_resource type="Texture2D" uid="uid://b03tyh8poj1of" path="res://assets/Cam4.png" id="14_8bel3"]
+[ext_resource type="Texture2D" uid="uid://cn8e6w1ehnc7b" path="res://assets/Cam5.png" id="15_brhe2"]
+[ext_resource type="Texture2D" uid="uid://vukgwo2dwinx" path="res://assets/Cam6.png" id="16_q7fvt"]
+[ext_resource type="Texture2D" uid="uid://c4l3ky778n0jy" path="res://assets/Cam7.png" id="17_m6y3l"]
+[ext_resource type="Texture2D" uid="uid://c1rxle8uh2q0h" path="res://assets/Cam8.png" id="18_qarbs"]
+[ext_resource type="Texture2D" uid="uid://m6ls52a3t27f" path="res://assets/Cam9.png" id="19_lw82y"]
+[ext_resource type="Texture2D" uid="uid://dq8s6pae5w1pu" path="res://assets/Cam10.png" id="20_rd3qn"]
+[ext_resource type="Texture2D" uid="uid://bfpjnso70xqew" path="res://assets/Cam11.png" id="21_f8tx5"]
+[ext_resource type="Texture2D" uid="uid://bj3rcgip5vvkv" path="res://assets/Cam12.png" id="22_lj1bj"]
+[ext_resource type="Texture2D" uid="uid://38l14cu2m884" path="res://assets/Cam13.png" id="23_d0upd"]
+[ext_resource type="Texture2D" uid="uid://cmruig2siuoep" path="res://assets/Cam14.png" id="24_fxx70"]
+[ext_resource type="Texture2D" uid="uid://syvydtmw7hva" path="res://assets/Cam1BG.png" id="26_qwixd"]
+[ext_resource type="Texture2D" uid="uid://b4mjxh3bgljev" path="res://assets/Cam2BG.png" id="27_5ouu8"]
+[ext_resource type="Texture2D" uid="uid://4uriu6s5fjhm" path="res://assets/Cam3BG.png" id="28_qpavr"]
+[ext_resource type="Texture2D" uid="uid://biiiymu5pruyx" path="res://assets/Cam4BG.png" id="29_f3i1m"]
+[ext_resource type="Texture2D" uid="uid://b4d0np80sf2r6" path="res://assets/Cam5BG.png" id="30_htfik"]
+[ext_resource type="Texture2D" uid="uid://frnbxg7walsm" path="res://assets/Cam6BG.png" id="31_3dr83"]
+[ext_resource type="Texture2D" uid="uid://bl5ihvyrejtt2" path="res://assets/Cam7BG.png" id="32_bqwxi"]
+[ext_resource type="Texture2D" uid="uid://b75p8wa83sjlj" path="res://assets/Cam8BG.png" id="33_uad0b"]
+[ext_resource type="Texture2D" uid="uid://byyv0o7a6q2o0" path="res://assets/Cam9BG.png" id="34_1d8pb"]
+[ext_resource type="Texture2D" uid="uid://t12bqhnrmhsd" path="res://assets/Cam10BG.png" id="35_52nbg"]
+[ext_resource type="Texture2D" uid="uid://2vam0xle3h1h" path="res://assets/Cam11BG.png" id="36_tpchv"]
+[ext_resource type="Texture2D" uid="uid://c65gieeoqq7eb" path="res://assets/Cam12BG.png" id="37_go1k3"]
+[ext_resource type="Texture2D" uid="uid://bpnn7lvtph4gn" path="res://assets/Cam13BG.png" id="38_ie2p0"]
+[ext_resource type="Texture2D" uid="uid://dc4alp5eisluy" path="res://assets/Cam14BG.png" id="39_in2m6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2gmv"]
+size = Vector2(195, 521.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x53x2"]
+size = Vector2(181.25, 510)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dbuar"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_wbvyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ttil4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ksymc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8bel3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_brhe2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_q7fvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_m6y3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_qarbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_lw82y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_rd3qn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_f8tx5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_lj1bj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_d0upd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_fxx70")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_er6cv"]
+size = Vector2(4.92902, 6.50081)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qd1le"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_qwixd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_5ouu8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_qpavr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_f3i1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_htfik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_3dr83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_bqwxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_uad0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_1d8pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_52nbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_tpchv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_go1k3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_ie2p0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_in2m6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Night" type="Node2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_qlrxd")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-1.25, 1.52588e-05)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_ncv6x")
+offset = Vector2(433, 249)
+
+[node name="DoorLeft" type="Sprite2D" parent="."]
+position = Vector2(541.25, 0)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("3_y6qpk")
+
+[node name="DoorRight" type="Sprite2D" parent="."]
+position = Vector2(541.25, 0)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("4_haet6")
+
+[node name="Vent" type="Sprite2D" parent="."]
+position = Vector2(541.25, 411.25)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("6_tr050")
+
+[node name="Office" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 0)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_13f7r")
+offset = Vector2(433, 249)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(0, 30)
+anchor_mode = 0
+script = ExtResource("2_wwioo")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="AM" type="Label" parent="GUI"]
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 53.0
+offset_bottom = 24.0
+text = "12 AM"
+
+[node name="Time" type="Label" parent="GUI"]
+offset_left = 7.0
+offset_top = 19.0
+offset_right = 47.0
+offset_bottom = 42.0
+scale = Vector2(0.5, 0.5)
+text = "0.0"
+
+[node name="CameraPanLeft" type="CharacterBody2D" parent="GUI"]
+modulate = Color(2.5028e-06, 0.637893, 0.637912, 1)
+scale = Vector2(0.8, 0.8)
+input_pickable = true
+
+[node name="PanLeft" type="CollisionShape2D" parent="GUI/CameraPanLeft"]
+position = Vector2(331.25, 257.5)
+shape = SubResource("RectangleShape2D_h2gmv")
+debug_color = Color(0, 0, 0, 0.42)
+script = ExtResource("3_w1qng")
+
+[node name="CameraPanRight" type="CharacterBody2D" parent="GUI"]
+input_pickable = true
+
+[node name="PanRight" type="CollisionShape2D" parent="GUI/CameraPanRight"]
+modulate = Color(0, 0.639216, 0.639216, 1)
+position = Vector2(531, 200)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_x53x2")
+debug_color = Color(0, 0, 0, 0.419608)
+script = ExtResource("4_7cdjt")
+
+[node name="Cameras" type="CanvasLayer" parent="GUI"]
+
+[node name="CamerasBackground" type="Sprite2D" parent="GUI/Cameras"]
+position = Vector2(300.25, 600)
+texture = ExtResource("10_gn17f")
+
+[node name="Map" type="AnimatedSprite2D" parent="GUI/Cameras/CamerasBackground"]
+position = Vector2(-0.25, 1)
+sprite_frames = SubResource("SpriteFrames_dbuar")
+script = ExtResource("12_u1yhb")
+
+[node name="Cam1" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
+input_pickable = true
+
+[node name="Cam1Button" type="CollisionShape2D" parent="GUI/Cameras/CamerasBackground/Map/Cam1"]
+position = Vector2(137, 25)
+rotation = 3.14159
+scale = Vector2(4.33842, -3.42937)
+shape = SubResource("RectangleShape2D_er6cv")
+
+[node name="Cam2" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
+input_pickable = true
+
+[node name="Cam2Button" type="CollisionShape2D" parent="GUI/Cameras/CamerasBackground/Map/Cam2"]
+position = Vector2(241, 35)
+rotation = 3.14159
+scale = Vector2(4.33842, -3.42937)
+shape = SubResource("RectangleShape2D_er6cv")
+
+[node name="Cam3" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
+input_pickable = true
+
+[node name="Cam3Button" type="CollisionShape2D" parent="GUI/Cameras/CamerasBackground/Map/Cam3"]
+position = Vector2(110, 38)
+rotation = 3.14159
+scale = Vector2(4.33842, -3.42937)
+shape = SubResource("RectangleShape2D_er6cv")
+
+[node name="Cam4" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
+input_pickable = true
+
+[node name="Cam4Button" type="CollisionShape2D" parent="GUI/Cameras/CamerasBackground/Map/Cam4"]
+position = Vector2(87, 52)
+rotation = 3.14159
+scale = Vector2(4.33842, -3.42937)
+shape = SubResource("RectangleShape2D_er6cv")
+
+[node name="Cam5" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
+input_pickable = true
+
+[node name="Cam5Button" type="CollisionShape2D" parent="GUI/Cameras/CamerasBackground/Map/Cam5"]
+position = Vector2(263, 51)
+rotation = 3.14159
+scale = Vector2(4.33842, -3.42937)
+shape = SubResource("RectangleShape2D_er6cv")
+
+[node name="Cam6" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
+input_pickable = true
+
+[node name="Cam6Button" type="CollisionShape2D" parent="GUI/Cameras/CamerasBackground/Map/Cam6"]
+position = Vector2(152, 61)
+rotation = 3.14159
+scale = Vector2(4.33842, -3.42937)
+shape = SubResource("RectangleShape2D_er6cv")
+
+[node name="Cam7" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
+input_pickable = true
+
+[node name="Cam7Button" type="CollisionShape2D" parent="GUI/Cameras/CamerasBackground/Map/Cam7"]
+position = Vector2(226, 92)
+rotation = 3.14159
+scale = Vector2(4.33842, -3.42937)
+shape = SubResource("RectangleShape2D_er6cv")
+
+[node name="Cam8" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
+input_pickable = true
+
+[node name="Cam8Button" type="CollisionShape2D" parent="GUI/Cameras/CamerasBackground/Map/Cam8"]
+position = Vector2(123, 108)
+rotation = 3.14159
+scale = Vector2(4.33842, -3.42937)
+shape = SubResource("RectangleShape2D_er6cv")
+
+[node name="Cam9" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
+input_pickable = true
+
+[node name="Cam9Button" type="CollisionShape2D" parent="GUI/Cameras/CamerasBackground/Map/Cam9"]
+position = Vector2(86, 130)
+rotation = 3.14159
+scale = Vector2(4.33842, -3.42937)
+shape = SubResource("RectangleShape2D_er6cv")
+
+[node name="Cam10" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
+input_pickable = true
+
+[node name="Cam10Button" type="CollisionShape2D" parent="GUI/Cameras/CamerasBackground/Map/Cam10"]
+position = Vector2(176, 129)
+rotation = 3.14159
+scale = Vector2(4.33842, -3.42937)
+shape = SubResource("RectangleShape2D_er6cv")
+
+[node name="Cam11" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
+input_pickable = true
+
+[node name="Cam11Button" type="CollisionShape2D" parent="GUI/Cameras/CamerasBackground/Map/Cam11"]
+position = Vector2(226, 127)
+rotation = 3.14159
+scale = Vector2(4.33842, -3.42937)
+shape = SubResource("RectangleShape2D_er6cv")
+
+[node name="Cam12" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
+input_pickable = true
+
+[node name="Cam12Button" type="CollisionShape2D" parent="GUI/Cameras/CamerasBackground/Map/Cam12"]
+position = Vector2(262, 129)
+rotation = 3.14159
+scale = Vector2(4.33842, -3.42937)
+shape = SubResource("RectangleShape2D_er6cv")
+
+[node name="Cam13" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
+input_pickable = true
+
+[node name="Cam13Button" type="CollisionShape2D" parent="GUI/Cameras/CamerasBackground/Map/Cam13"]
+position = Vector2(151, 145)
+rotation = 3.14159
+scale = Vector2(4.33842, -3.42937)
+shape = SubResource("RectangleShape2D_er6cv")
+
+[node name="Cam14" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
+input_pickable = true
+
+[node name="Cam14Button" type="CollisionShape2D" parent="GUI/Cameras/CamerasBackground/Map/Cam14"]
+position = Vector2(202, 145)
+rotation = 3.14159
+scale = Vector2(4.33842, -3.42937)
+shape = SubResource("RectangleShape2D_er6cv")
+
+[node name="CamBG" type="AnimatedSprite2D" parent="GUI/Cameras/CamerasBackground/Map"]
+sprite_frames = SubResource("SpriteFrames_qd1le")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="mouse_entered" from="GUI/CameraPanLeft" to="GUI/CameraPanLeft/PanLeft" method="_on_camera_pan_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/CameraPanLeft" to="GUI/CameraPanLeft/PanLeft" method="_on_camera_pan_mouse_exited"]
+[connection signal="mouse_entered" from="GUI/CameraPanRight" to="GUI/CameraPanRight/PanRight" method="_on_camera_pan_right_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/CameraPanRight" to="GUI/CameraPanRight/PanRight" method="_on_camera_pan_right_mouse_exited"]
+[connection signal="input_event" from="GUI/Cameras/CamerasBackground/Map/Cam1" to="GUI/Cameras/CamerasBackground/Map" method="_on_cam_1_input_event"]
+[connection signal="input_event" from="GUI/Cameras/CamerasBackground/Map/Cam2" to="GUI/Cameras/CamerasBackground/Map" method="_on_cam_2_input_event"]
+[connection signal="input_event" from="GUI/Cameras/CamerasBackground/Map/Cam3" to="GUI/Cameras/CamerasBackground/Map" method="_on_cam_3_input_event"]
+[connection signal="input_event" from="GUI/Cameras/CamerasBackground/Map/Cam4" to="GUI/Cameras/CamerasBackground/Map" method="_on_cam_4_input_event"]
+[connection signal="input_event" from="GUI/Cameras/CamerasBackground/Map/Cam5" to="GUI/Cameras/CamerasBackground/Map" method="_on_cam_5_input_event"]
+[connection signal="input_event" from="GUI/Cameras/CamerasBackground/Map/Cam6" to="GUI/Cameras/CamerasBackground/Map" method="_on_cam_6_input_event"]
+[connection signal="input_event" from="GUI/Cameras/CamerasBackground/Map/Cam7" to="GUI/Cameras/CamerasBackground/Map" method="_on_cam_7_input_event"]
+[connection signal="input_event" from="GUI/Cameras/CamerasBackground/Map/Cam8" to="GUI/Cameras/CamerasBackground/Map" method="_on_cam_8_input_event"]
+[connection signal="input_event" from="GUI/Cameras/CamerasBackground/Map/Cam9" to="GUI/Cameras/CamerasBackground/Map" method="_on_cam_9_input_event"]
+[connection signal="input_event" from="GUI/Cameras/CamerasBackground/Map/Cam10" to="GUI/Cameras/CamerasBackground/Map" method="_on_cam_10_input_event"]
+[connection signal="input_event" from="GUI/Cameras/CamerasBackground/Map/Cam11" to="GUI/Cameras/CamerasBackground/Map" method="_on_cam_11_input_event"]
+[connection signal="input_event" from="GUI/Cameras/CamerasBackground/Map/Cam12" to="GUI/Cameras/CamerasBackground/Map" method="_on_cam_12_input_event"]
+[connection signal="input_event" from="GUI/Cameras/CamerasBackground/Map/Cam13" to="GUI/Cameras/CamerasBackground/Map" method="_on_cam_13_input_event"]
+[connection signal="input_event" from="GUI/Cameras/CamerasBackground/Map/Cam14" to="GUI/Cameras/CamerasBackground/Map" method="_on_cam_14_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
