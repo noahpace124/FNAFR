@@ -224,13 +224,22 @@ offset_right = 44.0
 offset_bottom = 398.0
 text = "100%"
 
+[node name="Blackout" type="ColorRect" parent="GUI"]
+visible = false
+offset_left = -17.0
+offset_top = -10.0
+offset_right = 602.0
+offset_bottom = 406.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.713726)
+
 [node name="CameraPanLeft" type="CharacterBody2D" parent="GUI"]
 modulate = Color(2.5028e-06, 0.637893, 0.637912, 1)
 scale = Vector2(0.8, 0.8)
 input_pickable = true
 
 [node name="PanLeft" type="CollisionShape2D" parent="GUI/CameraPanLeft"]
-position = Vector2(93.75, 257.5)
+position = Vector2(90, 247.5)
 shape = SubResource("RectangleShape2D_h2gmv")
 debug_color = Color(0, 0, 0, 0.42)
 script = ExtResource("3_w1qng")

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1r04b1m6d7fi"]
+
+[ext_resource type="Texture2D" uid="uid://syvydtmw7hva" path="res://assets/Cam1BG.png" id="1_8mlrj"]
+[ext_resource type="Script" path="res://scripts/title.gd" id="1_ju8rh"]
+[ext_resource type="Texture2D" uid="uid://thky6a0xdcfc" path="res://assets/SpringyCam1.png" id="2_rxebf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hnptf"]
+font_size = 64
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_ju8rh")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(300, 202.5)
+scale = Vector2(1.05667, 1.0975)
+texture = ExtResource("1_8mlrj")
+flip_h = true
+
+[node name="BGSpringy" type="Sprite2D" parent="."]
+position = Vector2(245, 211)
+texture = ExtResource("2_rxebf")
+flip_h = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 1.0
+offset_right = 234.0
+offset_bottom = 127.0
+text = "FNAFR"
+label_settings = SubResource("LabelSettings_hnptf")
+
+[node name="Start" type="Button" parent="."]
+offset_left = 17.0
+offset_top = 114.0
+offset_right = 63.0
+offset_bottom = 145.0
+text = "Start"
+flat = true
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

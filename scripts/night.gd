@@ -11,6 +11,7 @@ extends Node
 @onready var Power = $GUI/Power
 @onready var Jumpscare = $GUI/Jumpscare
 @onready var SFX = $GUI/SFX
+@onready var Blackout = $GUI/Blackout
 
 var DoorLeftYMax = 311
 var DoorRightYMax = 311.25
@@ -27,6 +28,9 @@ var CameraSpeed = 40
 
 var JumpscareYMin = 200
 var JumpscareShake = 10
+
+func _ready() -> void:
+	EnemyAI.InitializeEnemies()
 
 func _on_timer_timeout() -> void:
 	time.text = str(float(time.text) + 0.1)
@@ -48,27 +52,39 @@ func _on_timer_timeout() -> void:
 		Global.HasPower = false
 		if Global.DoorLeftClosed:
 			Global.DoorLeftClosed = false
+			SFX.stream = preload("res://assets/audio/DoorClose.wav")
+			SFX.play()
 			DoorLeft.position.y -= 11
 			while DoorLeft.position.y != DoorYMin:
 				DoorLeft.position.y -= DoorSpeed
 				await get_tree().process_frame
 		if Global.DoorRightClosed:
 			Global.DoorRightClosed = false
+			SFX.stream = preload("res://assets/audio/DoorClose.wav")
+			SFX.play()
 			DoorRight.position.y -= 11.25
 			while DoorRight.position.y != DoorYMin:
 				DoorRight.position.y -= DoorSpeed
 				await get_tree().process_frame
 		if Global.VentClosed:
 			Global.VentClosed = false
+			SFX.stream = preload("res://assets/audio/VentClose.wav")
+			SFX.play()
 			while Vent.position.y != VentYMax:
 				Vent.position.y += VentSpeed
 				await get_tree().process_frame
 		if Global.CamerasUp:
 			Global.CamerasUp = false
+			SFX.stream = preload("res://assets/audio/CamsClose.wav")
+			SFX.play()
 			while Cameras.position.y != CameraPositionYMax:
 				Cameras.position.y += CameraSpeed
 				await get_tree().process_frame
 		Power.text = "0%"
+		if !Blackout.visible:
+			Blackout.visible = true
+			SFX.stream = preload("res://assets/audio/Blackout.wav")
+			SFX.play()
 	else:
 		Power.text = str(int(Global.CurrentPower)) + "%"
 	#Update Time
@@ -84,38 +100,41 @@ func _on_timer_timeout() -> void:
 		AM.text = "5:00 AM"
 	elif float(time.text) == 120.0:
 		AM.text = "6:00 AM"
-	#Enemy AI
-	EnemyAI.SpringyMoveCheck()
+	#Enemy AI Move
+	EnemyAI.MoveCheck()
 	#Remove Enemies
 	var nodes = $Enemies.get_children()
 	for node in nodes:
 		node.queue_free()
 	#Draw Enemies
-	if EnemyAI.SpringyLocation == 15:
-		var Springy = Sprite2D.new()
-		Springy.texture = preload("res://assets/SpringyOffice.png")
-		$Enemies.add_child(Springy)
-	if EnemyAI.SpringyLocation == 16:
-		var Springy = Sprite2D.new()
-		Springy.texture = preload("res://assets/SpringyJS.png")
-		$GUI/Jumpscare.add_child(Springy)
-		timer.stop()
-		Jumpscare.offset.y = JumpscareYMin
-		SFX.stream = preload("res://assets/audio/Jumpscare.wav")
-		SFX.play()
-		while Jumpscare.offset.y > (JumpscareYMin - 40):
-			Jumpscare.offset.y -= JumpscareShake
-			await get_tree().process_frame
-		while Jumpscare.offset.y < (JumpscareYMin + 40):
-			Jumpscare.offset.y += JumpscareShake
-			await get_tree().process_frame
-		while Jumpscare.offset.y > (JumpscareYMin - 40):
-			Jumpscare.offset.y -= JumpscareShake
-			await get_tree().process_frame
-		while Jumpscare.offset.y < (JumpscareYMin + 40):
-			Jumpscare.offset.y += JumpscareShake
-			await get_tree().process_frame
-		get_tree().quit()
+	for enemy in EnemyAI.enemies:
+		if enemy["Location"] == 15:
+			var new_enemy = Sprite2D.new()
+			var path = "res://assets/" + enemy["Name"] + "Office.png"
+			new_enemy.texture = load(path)
+			$Enemies.add_child(new_enemy)
+		if enemy["Location"] == 16:
+			var new_enemy = Sprite2D.new()
+			var path = "res://assets/" + enemy["Name"] + "JS.png"
+			new_enemy.texture = load(path)
+			$GUI/Jumpscare.add_child(new_enemy)
+			timer.stop()
+			Jumpscare.offset.y = JumpscareYMin
+			SFX.stream = preload("res://assets/audio/Jumpscare.wav")
+			SFX.play()
+			while Jumpscare.offset.y > (JumpscareYMin - 40):
+				Jumpscare.offset.y -= JumpscareShake
+				await get_tree().process_frame
+			while Jumpscare.offset.y < (JumpscareYMin + 40):
+				Jumpscare.offset.y += JumpscareShake
+				await get_tree().process_frame
+			while Jumpscare.offset.y > (JumpscareYMin - 40):
+				Jumpscare.offset.y -= JumpscareShake
+				await get_tree().process_frame
+			while Jumpscare.offset.y < (JumpscareYMin + 40):
+				Jumpscare.offset.y += JumpscareShake
+				await get_tree().process_frame
+			get_tree().quit()
 
 func _process(_delta: float) -> void:	
 	#handle input

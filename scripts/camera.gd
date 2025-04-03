@@ -10,3 +10,11 @@ func _process(_delta: float) -> void:
 			offset.x = MIN_X
 		elif offset.x > MAX_X:
 			offset.x = MAX_X
+	if offset.x <= 163: #Farthest right before can't see door
+		Global.LookingLeft = true
+	else:
+		Global.LookingLeft = false
+	if offset.x >= 82: #farthest left before can't see door
+		Global.LookingRight = true
+	else: 
+		Global.LookingRight = false
