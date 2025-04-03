@@ -5,6 +5,3 @@ CONT...
 16=vent
 17=right door
 18=office
-
-Lovely Bugged stands at door
-no cam repress sound

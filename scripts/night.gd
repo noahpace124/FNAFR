@@ -30,8 +30,28 @@ var CameraSpeed = 40
 var JumpscareYMin = 200
 var JumpscareShake = 10
 
+var packed_scene = PackedScene
+
 func _ready() -> void:
+	#Default States
 	EnemyAI.InitializeEnemies()
+	Global.CurrentPower = Global.StartingPower
+	Global.DoorLeftClosed = false
+	Global.DoorRightClosed = false
+	Global.VentClosed = false
+	Global.CamerasUp = false
+	Global.HasPower = true
+	Blackout.visible = false
+	Global.next_scene = "res://scenes/win.tscn"
+	# Start loading the next scene
+	ResourceLoader.load_threaded_request(Global.next_scene)
+
+	# Wait until the scene is loaded
+	while ResourceLoader.load_threaded_get_status(Global.next_scene) != ResourceLoader.THREAD_LOAD_LOADED:
+		await get_tree().process_frame  # Yield until the scene is loaded
+
+	# Get the loaded PackedScene
+	packed_scene = ResourceLoader.load_threaded_get(Global.next_scene)
 
 func _on_timer_timeout() -> void:
 	time.text = str(float(time.text) + 0.1)
@@ -101,6 +121,9 @@ func _on_timer_timeout() -> void:
 		AM.text = "5:00 AM"
 	elif float(time.text) == 120.0:
 		AM.text = "6:00 AM"
+		get_tree().change_scene_to_packed(packed_scene)
+		Global.next_scene = "res://scenes/title.tscn"
+		return
 	#Enemy AI Move
 	EnemyAI.MoveCheck()
 	#Remove Enemies

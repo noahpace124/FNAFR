@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs66hiqyohybl"]
+
+[ext_resource type="Script" path="res://scenes/win.gd" id="1_yd6jl"]
+[ext_resource type="AudioStream" uid="uid://v8i5qbo7mpn0" path="res://assets/audio/Fanfare.mp3" id="2_2pkfw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oe6td"]
+font_size = 64
+
+[node name="Win" type="Node2D"]
+script = ExtResource("1_yd6jl")
+
+[node name="Screen" type="CanvasLayer" parent="."]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="Screen"]
+stream = ExtResource("2_2pkfw")
+autoplay = true
+
+[node name="ColorRect" type="ColorRect" parent="Screen"]
+offset_right = 603.0
+offset_bottom = 403.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Screen"]
+offset_left = 172.0
+offset_top = 410.0
+offset_right = 417.0
+offset_bottom = 498.0
+text = "6:00 AM"
+label_settings = SubResource("LabelSettings_oe6td")
+
+[node name="Timer" type="Timer" parent="Screen"]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Screen/Timer" to="." method="_on_timer_timeout"]

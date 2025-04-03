@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://1fkq3wokcq1n"]
+
+[ext_resource type="Script" path="res://scripts/loading.gd" id="1_ee0nl"]
+
+[node name="Loading" type="Node2D"]
+script = ExtResource("1_ee0nl")
+
+[node name="Screen" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Screen"]
+offset_right = 602.0
+offset_bottom = 405.0
+color = Color(0, 0, 0, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="Screen"]
+anchors_preset = -1
+anchor_left = 0.148
+anchor_top = 0.264
+anchor_right = 0.148
+anchor_bottom = 0.264
+offset_left = 111.2
+offset_top = 77.4
+offset_right = 299.2
+offset_bottom = 104.4

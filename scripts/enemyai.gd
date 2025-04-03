@@ -16,7 +16,7 @@ var Springy = {
 	"Location": -1,
 	"AI": 0,
 	"Wait": 0.0,
-	"Act": 4.9
+	"Act": 4.6
 }
 
 var Lovely = {
@@ -26,7 +26,7 @@ var Lovely = {
 	"Location": -1,
 	"AI": 0,
 	"Wait": 0.0,
-	"Act": 4.6
+	"Act": 4.9
 }
 
 var enemies = []
@@ -190,7 +190,7 @@ func LovelyMove() -> void:
 			Lovely["Location"] = 10
 			print("Lovely moves to Cam 11")
 		else:
-			if Global.CamerasUp or Global.LookingLeft:
+			if Global.CamerasUp or !Global.LookingRight:
 				Lovely["Location"] = 17
 				print("Lovely moves to the Right Door")
 	elif Lovely["Location"] == 16:

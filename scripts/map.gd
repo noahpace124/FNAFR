@@ -133,6 +133,9 @@ func MoveEnemies() -> void:
 					DistortCamera()
 				elif Global.CameraView == enemy["Location"]:
 					DistortCamera()
+			if enemy["Location"] == 9:
+				SFX.stream = preload("res://assets/audio/VentEnter.wav")
+				SFX.play()
 			enemy["LastLocation"] = enemy["Location"]
 
 func ClearCamSprites() -> void:

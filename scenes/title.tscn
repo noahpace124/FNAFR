@@ -1,14 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1r04b1m6d7fi"]
+[gd_scene load_steps=6 format=3 uid="uid://b1r04b1m6d7fi"]
 
 [ext_resource type="Texture2D" uid="uid://syvydtmw7hva" path="res://assets/Cam1BG.png" id="1_8mlrj"]
 [ext_resource type="Script" path="res://scripts/title.gd" id="1_ju8rh"]
+[ext_resource type="AudioStream" uid="uid://d20idmv3n1gro" path="res://assets/audio/Title.mp3" id="2_idnii"]
 [ext_resource type="Texture2D" uid="uid://thky6a0xdcfc" path="res://assets/SpringyCam1.png" id="2_rxebf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hnptf"]
-font_size = 64
+font_size = 42
 
 [node name="Title" type="Node2D"]
 script = ExtResource("1_ju8rh")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_idnii")
+autoplay = true
 
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(300, 202.5)
@@ -22,11 +27,11 @@ texture = ExtResource("2_rxebf")
 flip_h = true
 
 [node name="Title" type="Label" parent="."]
-offset_left = 10.0
-offset_top = 1.0
-offset_right = 234.0
-offset_bottom = 127.0
-text = "FNAFR"
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 896.0
+offset_bottom = 103.0
+text = "Countless Nights at Springy's"
 label_settings = SubResource("LabelSettings_hnptf")
 
 [node name="Start" type="Button" parent="."]
