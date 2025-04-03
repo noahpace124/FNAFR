@@ -161,8 +161,17 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_ncv6x")
 offset = Vector2(433, 249)
 
-[node name="Enemies" type="Node2D" parent="."]
-position = Vector2(453, 349)
+[node name="EnemiesLeftDoor" type="Node2D" parent="."]
+position = Vector2(524, 319)
+scale = Vector2(1.2, 1.2)
+
+[node name="EnemiesVent" type="Node2D" parent="."]
+position = Vector2(553, 313)
+scale = Vector2(1.2, 1.2)
+
+[node name="EnemiesRightDoor" type="Node2D" parent="."]
+position = Vector2(554, 329)
+scale = Vector2(1.2, 1.2)
 
 [node name="DoorLeft" type="Sprite2D" parent="."]
 position = Vector2(541.25, 0)

@@ -11,18 +11,30 @@ var rng = RandomNumberGenerator.new()
 
 var Springy = {
 	"Name": "Springy",
-	"LastLocation": 0,
+	"Start": 0,
+	"LastLocation": -1,
 	"Location": -1,
-	"AI": 16,
+	"AI": 0,
 	"Wait": 0.0,
-	"Act": 4.7
+	"Act": 4.9
+}
+
+var Lovely = {
+	"Name": "Lovely",
+	"Start": 0,
+	"LastLocation": -1,
+	"Location": -1,
+	"AI": 0,
+	"Wait": 0.0,
+	"Act": 4.6
 }
 
 var enemies = []
 
 func InitializeEnemies() -> void:
 	for enemy in enemies:
-		enemy["Location"] = enemy["LastLocation"]
+		enemy["Location"] = enemy["Start"]
+		enemy["LastLocation"] = enemy["Location"]
 
 func MoveCheck() -> void:
 	for enemy in enemies:
@@ -33,6 +45,8 @@ func MoveCheck() -> void:
 			if num <= enemy["AI"]:
 				if enemy["Name"] == "Springy":
 					SpringyMove()
+				elif enemy["Name"] == "Lovely":
+					LovelyMove()
 			enemy["Wait"] = 0.0
 
 func GetEnemyByName(name: String) -> Dictionary:
@@ -99,11 +113,101 @@ func SpringyMove() -> void:
 		else:
 			if Global.CamerasUp or !Global.LookingLeft:
 				Springy["Location"] = 15
-				print("Springy moves to the Office")
+				print("Springy moves to the Left Door")
 	elif Springy["Location"] == 15:
 		if !Global.DoorLeftClosed:
-			Springy["Location"] = 16
+			Springy["Location"] = 18
 			print("Springy is in Position")
 		else:
 			Springy["Location"] = 0
 			print("Springy moves to Cam 1")
+
+func LovelyMove() -> void:
+	var Lovely = GetEnemyByName("Lovely")
+	if Lovely["Location"] == 0: #
+		var change = rng.randf()
+		if change < 0.5: #50/50
+			Lovely["Location"] = 1
+			print("Lovely moves to Cam 2")
+		else:
+			Lovely["Location"] = 5
+			print("Lovely moves to Cam 6")
+	elif Lovely["Location"] == 1:
+		var change = rng.randf()
+		if change < 0.5: #50/50
+			Lovely["Location"] = 4
+			print("Lovely moves to Cam 5")
+		else:
+			Lovely["Location"] = 5
+			print("Lovely moves to Cam 6")
+	elif Lovely["Location"] == 4:
+		var change = rng.randf()
+		if change < 0.5: #50/50
+			Lovely["Location"] = 6
+			print("Lovely moves to Cam 7")
+		else:
+			Lovely["Location"] = 11
+			print("Lovely moves to Cam 12")
+	elif Lovely["Location"] == 5:
+		var change = rng.randf()
+		if change < 0.5: #50/50
+			Lovely["Location"] = 4
+			print("Lovely moves to Cam 5")
+		else:
+			Lovely["Location"] = 6
+			print("Lovely moves to Cam 7")
+	elif Lovely["Location"] == 6:
+		var change = rng.randf()
+		if change < 0.5: #50/50
+			Lovely["Location"] = 10
+			print("Lovely moves to Cam 11")
+		else:
+			Lovely["Location"] = 11
+			print("Lovely moves to Cam 12")
+	elif Lovely["Location"] == 10:
+		var change = rng.randf()
+		if change < 0.5: #50/50
+			Lovely["Location"] = 9
+			print("Lovely moves to Cam 10")
+		else:
+			Lovely["Location"] = 13
+			print("Lovely moves to Cam 14")
+	elif Lovely["Location"] == 9:
+		if Global.CamerasUp:
+			Lovely["Location"] = 16
+			print("Lovely moves to the Vent")
+	elif Lovely["Location"] == 11:
+		var change = rng.randf()
+		if change < 0.5: #50/50
+			Lovely["Location"] = 10
+			print("Lovely moves to Cam 11")
+		else:
+			Lovely["Location"] = 13
+			print("Lovely moves to Cam 14")
+	elif Lovely["Location"] == 13:
+		var change = rng.randf()
+		if change < 0.5: #50/50
+			Lovely["Location"] = 10
+			print("Lovely moves to Cam 11")
+		else:
+			if Global.CamerasUp or Global.LookingLeft:
+				Lovely["Location"] = 17
+				print("Lovely moves to the Right Door")
+	elif Lovely["Location"] == 16:
+		if !Global.VentClosed:
+			Lovely["Location"] = 18
+			print("Lovely is in Position")
+		else:
+			Lovely["Location"] = 0
+			print("Lovely moves to Cam 1")
+	elif Lovely["Location"] == 17:
+		if !Global.DoorRightClosed:
+			Lovely["Location"] = 18
+			print("Lovely is in Position")
+		else:
+			Lovely["Location"] = 0
+			print("Lovely moves to Cam 1")
+	
+	
+		
+		

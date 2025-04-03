@@ -12,6 +12,7 @@ extends Node
 @onready var Jumpscare = $GUI/Jumpscare
 @onready var SFX = $GUI/SFX
 @onready var Blackout = $GUI/Blackout
+@onready var Office = $Office
 
 var DoorLeftYMax = 311
 var DoorRightYMax = 311.25
@@ -103,17 +104,28 @@ func _on_timer_timeout() -> void:
 	#Enemy AI Move
 	EnemyAI.MoveCheck()
 	#Remove Enemies
-	var nodes = $Enemies.get_children()
+	var nodes = $EnemiesLeftDoor.get_children()
+	for node in nodes:
+		node.queue_free()
+	nodes = $EnemiesVent.get_children()
+	for node in nodes:
+		node.queue_free()
+	nodes = $EnemiesRightDoor.get_children()
 	for node in nodes:
 		node.queue_free()
 	#Draw Enemies
 	for enemy in EnemyAI.enemies:
-		if enemy["Location"] == 15:
+		if enemy["Location"] in [15, 16, 17]:
 			var new_enemy = Sprite2D.new()
-			var path = "res://assets/" + enemy["Name"] + "Office.png"
+			var path = "res://assets/" + enemy["Name"] + str(enemy["Location"]) + ".png"
 			new_enemy.texture = load(path)
-			$Enemies.add_child(new_enemy)
-		if enemy["Location"] == 16:
+			if enemy["Location"] == 15:
+				$EnemiesLeftDoor.add_child(new_enemy)
+			elif enemy["Location"] == 16:
+				$EnemiesVent.add_child(new_enemy)
+			else:
+				$EnemiesRightDoor.add_child(new_enemy)
+		if enemy["Location"] == 18:
 			var new_enemy = Sprite2D.new()
 			var path = "res://assets/" + enemy["Name"] + "JS.png"
 			new_enemy.texture = load(path)

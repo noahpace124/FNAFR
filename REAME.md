@@ -1,5 +1,10 @@
 fix jumpscare
 CONT...
+ Enemy Start
+15=left door
+16=vent
+17=right door
+18=office
 
-sfx good, add instructions
-You are here, ambient noise randomely
+Lovely Bugged stands at door
+no cam repress sound

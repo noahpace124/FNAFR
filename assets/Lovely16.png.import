@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwhvetii7nq6k"
-path="res://.godot/imported/SpringyOffice.png-4a0e1f41400ed2d0fc3f15fc334c474a.ctex"
+uid="uid://bhdim8g8jkeko"
+path="res://.godot/imported/Lovely16.png-7b3b9e41a2d4574a9c477658d173263f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/SpringyOffice.png"
-dest_files=["res://.godot/imported/SpringyOffice.png-4a0e1f41400ed2d0fc3f15fc334c474a.ctex"]
+source_file="res://assets/Lovely16.png"
+dest_files=["res://.godot/imported/Lovely16.png-7b3b9e41a2d4574a9c477658d173263f.ctex"]
 
 [params]
 

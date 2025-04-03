@@ -7,87 +7,101 @@ extends AnimatedSprite2D
 
 func _on_cam_1_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.CameraView = 0
-		SFX.stream = preload("res://assets/audio/CamsChange.wav")
-		SFX.play()
+		if !Global.CameraView == 0:
+			Global.CameraView = 0
+			SFX.stream = preload("res://assets/audio/CamsChange.wav")
+			SFX.play()
 
 func _on_cam_2_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.CameraView = 1
-		SFX.stream = preload("res://assets/audio/CamsChange.wav")
-		SFX.play()
+		if !Global.CameraView == 1:
+			Global.CameraView = 1
+			SFX.stream = preload("res://assets/audio/CamsChange.wav")
+			SFX.play()
 
 func _on_cam_3_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.CameraView = 2
-		SFX.stream = preload("res://assets/audio/CamsChange.wav")
-		SFX.play()
+		if !Global.CameraView == 2:
+			Global.CameraView = 2
+			SFX.stream = preload("res://assets/audio/CamsChange.wav")
+			SFX.play()
 
 func _on_cam_4_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.CameraView = 3
-		SFX.stream = preload("res://assets/audio/CamsChange.wav")
-		SFX.play()
+		if !Global.CameraView == 3:
+			Global.CameraView = 3
+			SFX.stream = preload("res://assets/audio/CamsChange.wav")
+			SFX.play()
 
 func _on_cam_5_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.CameraView = 4
-		SFX.stream = preload("res://assets/audio/CamsChange.wav")
-		SFX.play()
+		if !Global.CameraView == 4:	
+			Global.CameraView = 4
+			SFX.stream = preload("res://assets/audio/CamsChange.wav")
+			SFX.play()
 
 func _on_cam_6_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.CameraView = 5
-		SFX.stream = preload("res://assets/audio/CamsChange.wav")
-		SFX.play()
+		if !Global.CameraView == 5:
+			Global.CameraView = 5
+			SFX.stream = preload("res://assets/audio/CamsChange.wav")
+			SFX.play()
 
 func _on_cam_7_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.CameraView = 6
-		SFX.stream = preload("res://assets/audio/CamsChange.wav")
-		SFX.play()
+		if !Global.CameraView == 6:
+			Global.CameraView = 6
+			SFX.stream = preload("res://assets/audio/CamsChange.wav")
+			SFX.play()
 
 func _on_cam_8_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.CameraView = 7
-		SFX.stream = preload("res://assets/audio/CamsChange.wav")
-		SFX.play()
+		if !Global.CameraView == 7:
+			Global.CameraView = 7
+			SFX.stream = preload("res://assets/audio/CamsChange.wav")
+			SFX.play()
 
 func _on_cam_9_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.CameraView = 8
-		SFX.stream = preload("res://assets/audio/CamsChange.wav")
-		SFX.play()
+		if !Global.CameraView == 8:
+			Global.CameraView = 8
+			SFX.stream = preload("res://assets/audio/CamsChange.wav")
+			SFX.play()
 
 func _on_cam_10_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.CameraView = 9
-		SFX.stream = preload("res://assets/audio/CamsChange.wav")
-		SFX.play()
+		if !Global.CameraView == 9:
+			Global.CameraView = 9
+			SFX.stream = preload("res://assets/audio/CamsChange.wav")
+			SFX.play()
 
 func _on_cam_11_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.CameraView = 10
-		SFX.stream = preload("res://assets/audio/CamsChange.wav")
-		SFX.play()
+		if !Global.CameraView == 10:
+			Global.CameraView = 10
+			SFX.stream = preload("res://assets/audio/CamsChange.wav")
+			SFX.play()
 
 func _on_cam_12_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.CameraView = 11
-		SFX.stream = preload("res://assets/audio/CamsChange.wav")
-		SFX.play()
+		if !Global.CameraView == 11:
+			Global.CameraView = 11
+			SFX.stream = preload("res://assets/audio/CamsChange.wav")
+			SFX.play()
 
 func _on_cam_13_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.CameraView = 12
-		SFX.stream = preload("res://assets/audio/CamsChange.wav")
-		SFX.play()
+		if !Global.CameraView == 12:
+			Global.CameraView = 12
+			SFX.stream = preload("res://assets/audio/CamsChange.wav")
+			SFX.play()
 
 func _on_cam_14_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Global.CameraView = 13
-		SFX.stream = preload("res://assets/audio/CamsChange.wav")
-		SFX.play()
+		if !Global.CameraView == 13:
+			Global.CameraView = 13
+			SFX.stream = preload("res://assets/audio/CamsChange.wav")
+			SFX.play()
 
 func DistortCamera() -> void:
 	SFX.stream = preload("res://assets/audio/CamsDistort.wav")
@@ -111,7 +125,7 @@ func DistortCamera() -> void:
 func MoveEnemies() -> void:
 	for enemy in EnemyAI.enemies:
 		if enemy["LastLocation"] != enemy["Location"]:
-			if enemy["LastLocation"] == 15 and enemy["Location"] == 0:
+			if enemy["LastLocation"] in [15, 16, 17] and enemy["Location"] == enemy["Start"]:
 				SFX.stream = preload("res://assets/audio/Thunk.wav")
 				SFX.play()
 			if Global.CamerasUp:

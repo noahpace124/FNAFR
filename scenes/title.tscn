@@ -21,7 +21,7 @@ position = Vector2(245, 211)
 texture = ExtResource("2_rxebf")
 flip_h = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 offset_left = 10.0
 offset_top = 1.0
 offset_right = 234.0
@@ -36,5 +36,17 @@ offset_right = 63.0
 offset_bottom = 145.0
 text = "Start"
 flat = true
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 179.0
+offset_right = 252.0
+offset_bottom = 332.0
+text = "A -> Left Door Close/Open
+D -> Right Door Close/Open
+W -> Vent Close/Open
+S -> Cameras Up/Down
+Mouse to Pan Around the Office
+Click on Cams to Change"
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
