@@ -9,8 +9,9 @@ var JumpscareShake = 20
 
 var rng = RandomNumberGenerator.new()
 
+var SpringyLastLocation = 0
 var SpringyLocation = 0
-var SpringyAI = 15
+var SpringyAI = 16
 
 var SpringyWait = 0.0
 func SpringyMoveCheck() -> void:

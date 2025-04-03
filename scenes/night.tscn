@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://u1x8ha0kn822"]
+[gd_scene load_steps=47 format=3 uid="uid://u1x8ha0kn822"]
 
 [ext_resource type="Texture2D" uid="uid://bho5p2dymnjb5" path="res://assets/office.png" id="1_13f7r"]
 [ext_resource type="Texture2D" uid="uid://d0yuknft3e844" path="res://assets/bg.png" id="1_ncv6x"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/pan_right.gd" id="4_7cdjt"]
 [ext_resource type="Texture2D" uid="uid://d3rfjy1pn27lo" path="res://assets/Doorright.png" id="4_haet6"]
 [ext_resource type="Texture2D" uid="uid://blwg8gwr84lf" path="res://assets/vent.png" id="6_tr050"]
+[ext_resource type="AudioStream" uid="uid://c1vt71hgamofs" path="res://assets/audio/BGM.mp3" id="8_3t6up"]
 [ext_resource type="Texture2D" uid="uid://uju3df2jth1k" path="res://assets/camerasBackground.png" id="10_gn17f"]
 [ext_resource type="Texture2D" uid="uid://dxauvrk11epuf" path="res://assets/Cam1.png" id="11_wbvyc"]
 [ext_resource type="Texture2D" uid="uid://de1gj1kaweimt" path="res://assets/Cam2.png" id="12_ttil4"]
@@ -25,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bj3rcgip5vvkv" path="res://assets/Cam12.png" id="22_lj1bj"]
 [ext_resource type="Texture2D" uid="uid://38l14cu2m884" path="res://assets/Cam13.png" id="23_d0upd"]
 [ext_resource type="Texture2D" uid="uid://cmruig2siuoep" path="res://assets/Cam14.png" id="24_fxx70"]
+[ext_resource type="Texture2D" uid="uid://1lx628aef78g" path="res://assets/CamDistort.png" id="25_jbupa"]
 [ext_resource type="Texture2D" uid="uid://syvydtmw7hva" path="res://assets/Cam1BG.png" id="26_qwixd"]
 [ext_resource type="Texture2D" uid="uid://b4mjxh3bgljev" path="res://assets/Cam2BG.png" id="27_5ouu8"]
 [ext_resource type="Texture2D" uid="uid://4uriu6s5fjhm" path="res://assets/Cam3BG.png" id="28_qpavr"]
@@ -45,56 +47,6 @@ size = Vector2(195, 521.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x53x2"]
 size = Vector2(181.25, 510)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dbuar"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_wbvyc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_ttil4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_ksymc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_8bel3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_brhe2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_q7fvt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_m6y3l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_qarbs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_lw82y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_rd3qn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_f8tx5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_lj1bj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_d0upd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_fxx70")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qd1le"]
 animations = [{
@@ -146,6 +98,56 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_dbuar"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_wbvyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ttil4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ksymc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8bel3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_brhe2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_q7fvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_m6y3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_qarbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_lw82y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_rd3qn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_f8tx5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_lj1bj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_d0upd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_fxx70")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_er6cv"]
 size = Vector2(4.92902, 6.50081)
 
@@ -183,6 +185,14 @@ scale = Vector2(1.25, 1.25)
 texture = ExtResource("1_13f7r")
 offset = Vector2(433, 249)
 
+[node name="AM" type="Label" parent="."]
+modulate = Color(0, 0.744309, 0.387766, 1)
+offset_left = 438.0
+offset_top = 330.0
+offset_right = 511.0
+offset_bottom = 360.0
+text = "12:00 AM"
+
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, 30)
 anchor_mode = 0
@@ -190,18 +200,20 @@ script = ExtResource("2_wwioo")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="AM" type="Label" parent="GUI"]
-offset_left = 5.0
-offset_top = 1.0
-offset_right = 53.0
-offset_bottom = 24.0
-text = "12 AM"
+[node name="BGM" type="AudioStreamPlayer2D" parent="GUI"]
+stream = ExtResource("8_3t6up")
+volume_db = -15.0
+pitch_scale = 0.75
+autoplay = true
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="GUI"]
 
 [node name="Time" type="Label" parent="GUI"]
-offset_left = 7.0
-offset_top = 19.0
-offset_right = 47.0
-offset_bottom = 42.0
+visible = false
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 42.0
+offset_bottom = 22.0
 scale = Vector2(0.5, 0.5)
 text = "0.0"
 
@@ -218,7 +230,7 @@ scale = Vector2(0.8, 0.8)
 input_pickable = true
 
 [node name="PanLeft" type="CollisionShape2D" parent="GUI/CameraPanLeft"]
-position = Vector2(91.25, 246.25)
+position = Vector2(93.75, 257.5)
 shape = SubResource("RectangleShape2D_h2gmv")
 debug_color = Color(0, 0, 0, 0.42)
 script = ExtResource("3_w1qng")
@@ -240,13 +252,14 @@ script = ExtResource("4_7cdjt")
 position = Vector2(300.25, 600)
 texture = ExtResource("10_gn17f")
 
+[node name="CamBG" type="AnimatedSprite2D" parent="GUI/Cameras/CamerasBackground"]
+position = Vector2(-0.25, 1)
+sprite_frames = SubResource("SpriteFrames_qd1le")
+
 [node name="Map" type="AnimatedSprite2D" parent="GUI/Cameras/CamerasBackground"]
 position = Vector2(-0.25, 1)
 sprite_frames = SubResource("SpriteFrames_dbuar")
 script = ExtResource("12_u1yhb")
-
-[node name="CamBG" type="AnimatedSprite2D" parent="GUI/Cameras/CamerasBackground/Map"]
-sprite_frames = SubResource("SpriteFrames_qd1le")
 
 [node name="Cam1" type="CharacterBody2D" parent="GUI/Cameras/CamerasBackground/Map"]
 input_pickable = true
@@ -374,12 +387,24 @@ rotation = 3.14159
 scale = Vector2(4.33842, -3.42937)
 shape = SubResource("RectangleShape2D_er6cv")
 
-[node name="CamNum" type="Label" parent="GUI/Cameras/CamerasBackground/Map"]
-offset_left = 66.0
-offset_top = -36.0
-offset_right = 116.0
-offset_bottom = -13.0
+[node name="CamNumBox" type="ColorRect" parent="GUI/Cameras/CamerasBackground/Map"]
+offset_left = -285.0
+offset_top = -186.0
+offset_right = -216.0
+offset_bottom = -162.0
+color = Color(0, 0, 0, 1)
+
+[node name="CamNum" type="Label" parent="GUI/Cameras/CamerasBackground/Map/CamNumBox"]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 53.0
+offset_bottom = 23.0
 text = "Cam #"
+
+[node name="CamDistort" type="Sprite2D" parent="GUI/Cameras/CamerasBackground"]
+visible = false
+position = Vector2(-0.25, 1)
+texture = ExtResource("25_jbupa")
 
 [node name="Jumpscare" type="CanvasLayer" parent="GUI"]
 offset = Vector2(300.25, 600)

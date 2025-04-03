@@ -5,11 +5,12 @@ extends Node
 @onready var Vent = $Vent
 @onready var Cameras = $GUI/Cameras/CamerasBackground
 @onready var camera = $GUI
-@onready var AM = $GUI/AM
+@onready var AM = $AM
 @onready var time= $GUI/Time
 @onready var timer = $Timer
 @onready var Power = $GUI/Power
 @onready var Jumpscare = $GUI/Jumpscare
+@onready var SFX = $GUI/SFX
 
 var DoorLeftYMax = 311
 var DoorRightYMax = 311.25
@@ -72,17 +73,17 @@ func _on_timer_timeout() -> void:
 		Power.text = str(int(Global.CurrentPower)) + "%"
 	#Update Time
 	if float(time.text) == 20.0:
-		AM.text = "1 AM"
+		AM.text = "1:00 AM"
 	elif float(time.text) == 40.0:
-		AM.text = "2 AM"
+		AM.text = "2:00 AM"
 	elif float(time.text) == 60.0:
-		AM.text = "3 AM"
+		AM.text = "3:00 AM"
 	elif float(time.text) == 80.0:
-		AM.text = "4 AM"
+		AM.text = "4:00 AM"
 	elif float(time.text) == 100.0:
-		AM.text = "5 AM"
+		AM.text = "5:00 AM"
 	elif float(time.text) == 120.0:
-		AM.text = "OVERTIME"
+		AM.text = "6:00 AM"
 	#Enemy AI
 	EnemyAI.SpringyMoveCheck()
 	#Remove Enemies
@@ -100,6 +101,8 @@ func _on_timer_timeout() -> void:
 		$GUI/Jumpscare.add_child(Springy)
 		timer.stop()
 		Jumpscare.offset.y = JumpscareYMin
+		SFX.stream = preload("res://assets/audio/Jumpscare.wav")
+		SFX.play()
 		while Jumpscare.offset.y > (JumpscareYMin - 40):
 			Jumpscare.offset.y -= JumpscareShake
 			await get_tree().process_frame
@@ -120,12 +123,16 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("LeftDoor"):
 			if !Global.DoorLeftClosed:
 				Global.DoorLeftClosed = true
+				SFX.stream = preload("res://assets/audio/DoorOpen.wav")
+				SFX.play()
 				DoorLeft.position.y += 11
 				while DoorLeft.position.y != DoorLeftYMax:
 					DoorLeft.position.y += DoorSpeed
 					await get_tree().process_frame
 			else:
 				Global.DoorLeftClosed = false
+				SFX.stream = preload("res://assets/audio/DoorClose.wav")
+				SFX.play()
 				DoorLeft.position.y -= 11
 				while DoorLeft.position.y != DoorYMin:
 					DoorLeft.position.y -= DoorSpeed
@@ -133,12 +140,16 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("RightDoor"):
 			if !Global.DoorRightClosed:
 				Global.DoorRightClosed = true
+				SFX.stream = preload("res://assets/audio/DoorOpen.wav")
+				SFX.play()
 				DoorRight.position.y += 11.25
 				while DoorRight.position.y != DoorRightYMax:
 					DoorRight.position.y += DoorSpeed
 					await get_tree().process_frame
 			else:
 				Global.DoorRightClosed = false
+				SFX.stream = preload("res://assets/audio/DoorClose.wav")
+				SFX.play()
 				DoorRight.position.y -= 11.25
 				while DoorRight.position.y != DoorYMin:
 					DoorRight.position.y -= DoorSpeed
@@ -146,22 +157,30 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("Vent"):
 			if !Global.VentClosed:
 				Global.VentClosed = true
+				SFX.stream = preload("res://assets/audio/VentOpen.wav")
+				SFX.play()
 				while Vent.position.y != VentYMin:
 					Vent.position.y -= VentSpeed
 					await get_tree().process_frame
 			else:
 				Global.VentClosed = false
+				SFX.stream = preload("res://assets/audio/VentClose.wav")
+				SFX.play()
 				while Vent.position.y != VentYMax:
 					Vent.position.y += VentSpeed
 					await get_tree().process_frame
 		if Input.is_action_just_pressed("Cameras"):
 			if !Global.CamerasUp:
 				Global.CamerasUp = true
+				SFX.stream = preload("res://assets/audio/CamsOpen.wav")
+				SFX.play()
 				while Cameras.position.y != CameraPositionYMin:
 					Cameras.position.y -= CameraSpeed
 					await get_tree().process_frame
 			else:
 				Global.CamerasUp = false
+				SFX.stream = preload("res://assets/audio/CamsClose.wav")
+				SFX.play()
 				while Cameras.position.y != CameraPositionYMax:
 					Cameras.position.y += CameraSpeed
 					await get_tree().process_frame
