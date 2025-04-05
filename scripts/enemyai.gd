@@ -365,7 +365,6 @@ func GigglyMove():
 				if num == 1:
 					print("Giggly Attacks")
 					Giggly["Attack"] = true
-					await get_tree().create_timer(2.0).timeout
 				else:
 					if Giggly["Side"] == "Right":
 						print("Giggly moves to Left Door")
