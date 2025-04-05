@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 @onready var CamBG = $"../CamBG"
 @onready var CamNum = $CamNumBox/CamNum
 @onready var Distort = $"../CamDistort"
-@onready var SFX = $"../../../SFX"
+@onready var SFX = $"../../../OfficeSFX"
 
 func _on_cam_1_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -124,19 +124,20 @@ func DistortCamera() -> void:
 
 func MoveEnemies() -> void:
 	for enemy in EnemyAI.enemies:
-		if enemy["LastLocation"] != enemy["Location"]:
-			if enemy["LastLocation"] in [15, 16, 17] and enemy["Location"] == enemy["Start"]:
-				SFX.stream = preload("res://assets/audio/Thunk.wav")
-				SFX.play()
-			if Global.CamerasUp:
-				if Global.CameraView == enemy["LastLocation"]:
-					DistortCamera()
-				elif Global.CameraView == enemy["Location"]:
-					DistortCamera()
-			if enemy["Location"] == 9:
-				SFX.stream = preload("res://assets/audio/VentEnter.wav")
-				SFX.play()
-			enemy["LastLocation"] = enemy["Location"]
+		if enemy["Start"] != -1:
+			if enemy["LastLocation"] != enemy["Location"]:
+				if enemy["LastLocation"] in [15, 16, 17] and enemy["Location"] == enemy["Start"]:
+					SFX.stream = preload("res://assets/audio/Thunk.wav")
+					SFX.play()
+				if Global.CamerasUp:
+					if Global.CameraView == enemy["LastLocation"]:
+						DistortCamera()
+					elif Global.CameraView == enemy["Location"]:
+						DistortCamera()
+				if enemy["Location"] == 9:
+					SFX.stream = preload("res://assets/audio/VentEnter.wav")
+					SFX.play()
+				enemy["LastLocation"] = enemy["Location"]
 
 func ClearCamSprites() -> void:
 	var nodes = get_children()

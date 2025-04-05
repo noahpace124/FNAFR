@@ -1,4 +1,3 @@
-fix jumpscare
 CONT...
  Enemy Start
 15=left door

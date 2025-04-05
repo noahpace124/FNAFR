@@ -2,6 +2,7 @@ extends Node
 
 var next_scene = "res://scenes/loading.tscn"
 
+var CameraCanPan = true
 var CameraPan = 0
 
 var SPEED_CHANGE = 4
@@ -10,9 +11,13 @@ var DoorLeftClosed = false
 var DoorRightClosed = false
 var VentClosed = false
 var CamerasUp = false
+var DoorLeftWorks = true
+var DoorRightWorks = true
+var VentWorks = true
 
 var LookingRight = false
 var LookingLeft = false
+var CamerasJustDown = false
 
 var CameraView = 0
 

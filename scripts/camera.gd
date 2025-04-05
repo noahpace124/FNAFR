@@ -4,7 +4,7 @@ var MIN_X = 0
 var MAX_X = 220
 
 func _process(_delta: float) -> void:
-	if !Global.CamerasUp:
+	if !Global.CamerasUp and Global.CameraCanPan:
 		offset.x += Global.CameraPan
 		if offset.x < MIN_X:
 			offset.x = MIN_X

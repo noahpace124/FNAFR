@@ -161,6 +161,31 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_ncv6x")
 offset = Vector2(433, 249)
 
+[node name="EnemiesWindow" type="Node2D" parent="."]
+scale = Vector2(1.2, 1.2)
+
+[node name="DoorLeftCover" type="ColorRect" parent="."]
+offset_right = 212.0
+offset_bottom = 500.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VentCover" type="ColorRect" parent="."]
+offset_left = 661.0
+offset_top = 326.0
+offset_right = 835.0
+offset_bottom = 441.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DoorRightCover" type="ColorRect" parent="."]
+offset_left = 855.0
+offset_top = -2.5
+offset_right = 1040.0
+offset_bottom = 588.5
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="EnemiesLeftDoor" type="Node2D" parent="."]
 position = Vector2(524, 319)
 scale = Vector2(1.2, 1.2)
@@ -211,14 +236,15 @@ script = ExtResource("2_wwioo")
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="GUI"]
 stream = ExtResource("8_3t6up")
-volume_db = -15.0
+volume_db = -5.095
 pitch_scale = 0.75
 autoplay = true
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="GUI"]
+[node name="OfficeSFX" type="AudioStreamPlayer2D" parent="GUI"]
+
+[node name="EnemySFX" type="AudioStreamPlayer2D" parent="GUI"]
 
 [node name="Time" type="Label" parent="GUI"]
-visible = false
 offset_left = 2.0
 offset_top = -1.0
 offset_right = 42.0
@@ -263,6 +289,11 @@ scale = Vector2(0.8, 0.8)
 shape = SubResource("RectangleShape2D_x53x2")
 debug_color = Color(0, 0, 0, 0.419608)
 script = ExtResource("4_7cdjt")
+
+[node name="Jumpscare" type="CanvasLayer" parent="GUI"]
+offset = Vector2(300.25, 600)
+scale = Vector2(1.25, 1.25)
+transform = Transform2D(1.25, 0, 0, 1.25, 300.25, 600)
 
 [node name="Cameras" type="CanvasLayer" parent="GUI"]
 
@@ -423,11 +454,6 @@ text = "Cam #"
 visible = false
 position = Vector2(-0.25, 1)
 texture = ExtResource("25_jbupa")
-
-[node name="Jumpscare" type="CanvasLayer" parent="GUI"]
-offset = Vector2(300.25, 600)
-scale = Vector2(1.25, 1.25)
-transform = Transform2D(1.25, 0, 0, 1.25, 300.25, 600)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1

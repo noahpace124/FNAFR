@@ -1,9 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1r04b1m6d7fi"]
+[gd_scene load_steps=9 format=3 uid="uid://b1r04b1m6d7fi"]
 
 [ext_resource type="Texture2D" uid="uid://syvydtmw7hva" path="res://assets/Cam1BG.png" id="1_8mlrj"]
 [ext_resource type="Script" path="res://scripts/title.gd" id="1_ju8rh"]
 [ext_resource type="AudioStream" uid="uid://d20idmv3n1gro" path="res://assets/audio/Title.mp3" id="2_idnii"]
 [ext_resource type="Texture2D" uid="uid://thky6a0xdcfc" path="res://assets/SpringyCam1.png" id="2_rxebf"]
+[ext_resource type="Texture2D" uid="uid://ce8foccic1p0v" path="res://assets/LovelyCam1.png" id="5_vedu4"]
+[ext_resource type="Texture2D" uid="uid://cw21pnkwbbdbg" path="res://assets/SneakyCam14.png" id="6_fkqc5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mpusl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rxebf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vedu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fkqc5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hnptf"]
 font_size = 42
@@ -21,9 +40,9 @@ scale = Vector2(1.05667, 1.0975)
 texture = ExtResource("1_8mlrj")
 flip_h = true
 
-[node name="BGSpringy" type="Sprite2D" parent="."]
-position = Vector2(245, 211)
-texture = ExtResource("2_rxebf")
+[node name="BGChar" type="AnimatedSprite2D" parent="."]
+position = Vector2(351, 197)
+sprite_frames = SubResource("SpriteFrames_mpusl")
 flip_h = true
 
 [node name="Title" type="Label" parent="."]
