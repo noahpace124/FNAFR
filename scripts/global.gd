@@ -7,6 +7,8 @@ var CameraPan = 0
 
 var SPEED_CHANGE = 4
 
+var Night = 1
+
 var Hour = 25.0
 
 var DoorLeftClosed = false
@@ -32,5 +34,8 @@ var CurrentPower = 100
 var HasPower = true
 
 func initializeValues() -> void:
+	Night = 1
 	Hour = 25
 	StartingPower = 100
+	EnemyAI.enemies = []
+	EnemyAI.inactive = [EnemyAI.Springy, EnemyAI.Lovely, EnemyAI.Sneaky, EnemyAI.Giggly, EnemyAI.Sleepy]

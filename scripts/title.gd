@@ -12,7 +12,7 @@ func _ready() -> void:
 func _on_start_pressed() -> void:
 	# Reset Global Values
 	Global.initializeValues() 
-	# Set EnemyAI Values
+	# DEBUG
 	EnemyAI.Springy["AI"] = 0
 	EnemyAI.Lovely["AI"] = 0
 	EnemyAI.Sneaky["AI"] = 0

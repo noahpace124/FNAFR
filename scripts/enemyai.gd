@@ -12,6 +12,7 @@ var rng = RandomNumberGenerator.new()
 
 var Springy = {
 	"Name": "Springy",
+	"Desc": "Springy will make his way along the left side of the building, eventually arriving at your left door. Close the door when you see him peeking through to send him back to the start.",
 	"Start": 0,
 	"LastLocation": -1,
 	"Location": -1,
@@ -22,6 +23,7 @@ var Springy = {
 
 var Lovely = {
 	"Name": "Lovely",
+	"Desc": "Lovely will make her way along the right side of the building, eventually arriving at either your right door or vent. Close the corresponding door or vent when you see her to send her back to the start.",
 	"Start": 0,
 	"LastLocation": -1,
 	"Location": -1,
@@ -32,6 +34,7 @@ var Lovely = {
 
 var Sneaky = {
 	"Name": "Sneaky",
+	"Desc": "Sneaky will make his way along the left or right side of the building to cam 13 or cam 14. Once there he can run into your office and kill you. Look at him in the cameras to make him go back the way he came.",
 	"Start": 5,
 	"LastLocation": -1,
 	"Location": -1,
@@ -42,6 +45,7 @@ var Sneaky = {
 
 var Giggly = {
 	"Name": "Giggly",
+	"Desc": "Giggly start in camera 13 and runs back and forth behind your window. If you hear him say 'Here I come!', quickly close the door on the side that he is on to keep him away. Closing both doors will cause you to lose extra power.",
 	"Start": 12,
 	"Location": -1,
 	"LastLocation": -1,
@@ -63,6 +67,7 @@ var Giggly = {
 
 var Sleepy = {
 	"Name": "Sleepy",
+	"Desc": "When Sleepy appears in your office, you have to quickly find and click on her toy Plushy in the cameras to send her away, otherwise she will kill you.",
 	"Start": -1,
 	"Location": -1,
 	"LastLocation": -1,
@@ -71,6 +76,7 @@ var Sleepy = {
 	"Act": rng.randi_range(20, 40)
 }
 
+var inactive = [Springy, Lovely, Sneaky, Giggly, Sleepy]
 var enemies = []
 
 func InitializeEnemies() -> void:
