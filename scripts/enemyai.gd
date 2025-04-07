@@ -80,11 +80,9 @@ func InitializeEnemies() -> void:
 
 func MoveCheck() -> void:
 	for enemy in enemies:
-		if enemy["Name"] in ["Sneaky", "Giggly"]:
+		if enemy["Name"] in ["Sneaky"]:
 			if enemy["Name"] == "Sneaky":
 				SneakyMove()
-			if enemy["Name"] == "Giggly":
-				GigglyMove()
 		else:
 			enemy["Wait"] += 0.1
 			if enemy["Wait"] >= enemy["Act"]:
@@ -95,6 +93,8 @@ func MoveCheck() -> void:
 						SpringyMove()
 					elif enemy["Name"] == "Lovely":
 						LovelyMove()
+					elif enemy["Name"] == "Giggly":
+						GigglyMove()
 					elif enemy["Name"] == "Sleepy":
 						SleepyMove()
 				enemy["Wait"] = 0.0
@@ -366,39 +366,34 @@ func SneakyMove():
 				
 func GigglyMove():
 	var Giggly = GetEnemyByName("Giggly")
-	Giggly["Wait"] += 0.1
-	if Giggly["Wait"] >= Giggly["Act"]:
-		print("Giggly gets Impatient")
-		var num = rng.randi_range(1, 20)
-		if num <= Giggly["AI"]:
-			num = rng.randi_range(1, 5) #1/5
-			if num == 1:
-				print("Giggly Attacks")
-				Giggly["Attack"] = true
-				while Giggly["Attacking"]:
-					Giggly["Wait"] = 0.0
-					await get_tree().create_timer(0.1).timeout
-			else:
-				if Giggly["Side"] == "Right":
-					print("Giggly moves to Left Door")
-					Giggly["Side"] = "Left"
-					Giggly["Location"] = -1
-					Giggly["Move"] = true
-				else:
-					print("Giggly moves to Right Door")
-					Giggly["Side"] = "Right"
-					Giggly["Location"] = -1
-					Giggly["Move"] = true
-				while Giggly["Move"]:
-					Giggly["Wait"] = 0.0
-					await get_tree().create_timer(0.1).timeout
-		else:
+	var num = rng.randi_range(1, 5) #1/5
+	if num == 1:
+		print("Giggly Attacks")
+		Giggly["Attack"] = true
+		while Giggly["Attack"] or Giggly["Attacking"]:
 			Giggly["Wait"] = 0.0
+			await get_tree().create_timer(0.1).timeout
+	else:
+		if Giggly["Side"] == "Right":
+			print("Giggly moves to Left Door")
+			Giggly["Side"] = "Left"
+			Giggly["Location"] = -1
+			Giggly["Move"] = true
+			while Giggly["Move"]:
+				Giggly["Wait"] = 0.0
+				await get_tree().create_timer(0.1).timeout
+		else:
+			print("Giggly moves to Right Door")
+			Giggly["Side"] = "Right"
+			Giggly["Location"] = -1
+			Giggly["Move"] = true
+		while Giggly["Move"]:
+			Giggly["Wait"] = 0.0
+			await get_tree().create_timer(0.1).timeout
 
 func SleepyMove():
 	var Sleepy = GetEnemyByName("Sleepy")
 	while Sleepy["Location"] == -1:
-		print("Sleepy gets Impatient")
 		if Global.CamerasUp:
 			var cam = rng.randi_range(0, 14)
 			if Global.CameraView != cam:

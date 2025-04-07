@@ -176,44 +176,44 @@ func HandleEnemies():
 				EnemyAI.Sleepy["Location"] = 18
 		#Giggly
 		if EnemyAI.Giggly["Attack"] and !EnemyAI.Giggly["Attacking"]:
-			EnemyAI.Giggly["Attack"] = false
 			EnemyAI.Giggly["Attacking"] = true
+			EnemyAI.Giggly["Attack"] = false
 			var previous_location = EnemyAI.Giggly["Location"]
 			EnemyAI.Giggly["Location"] = -1
 			EnemySFX.stream = preload("res://assets/audio/GigglyAlert.wav")
 			EnemySFX.play()
-			await get_tree().create_timer(4.0).timeout
+			await get_tree().create_timer(5.0).timeout
 			if EnemyAI.Giggly["Side"] == "Left":
-				if !Global.DoorLeftClosed:
-					JumpscareTimer = 0.0
-					EnemyAI.Giggly["Location"] = 18
-				elif Global.DoorLeftClosed and Global.DoorRightClosed:
+				if Global.DoorLeftClosed and Global.DoorRightClosed:
 					Global.CurrentPower -= 5
 					EnemySFX.stream = preload("res://assets/audio/Thunk.wav")
 					EnemySFX.play()
 					EnemyAI.Giggly["Attacking"] = false
 					EnemyAI.Giggly["Location"] = previous_location
-				else:
+				elif Global.DoorLeftClosed:
 					EnemySFX.stream = preload("res://assets/audio/Thunk.wav")
 					EnemySFX.play()
 					EnemyAI.Giggly["Attacking"] = false
 					EnemyAI.Giggly["Location"] = previous_location
+				else:
+					JumpscareTimer = 0.0
+					EnemyAI.Giggly["Location"] = 18
 			elif EnemyAI.Giggly["Side"] == "Right":
-				if !Global.DoorRightClosed:
-					JumpscareTimer = 0.0
-					EnemyAI.Giggly["Location"] = 18
-				elif Global.DoorLeftClosed and Global.DoorRightClosed:
+				if Global.DoorLeftClosed and Global.DoorRightClosed:
 					Global.CurrentPower -= 5
 					EnemySFX.stream = preload("res://assets/audio/Thunk.wav")
 					EnemySFX.play()
 					EnemyAI.Giggly["Attacking"] = false
 					EnemyAI.Giggly["Location"] = previous_location
-				else:
+				elif Global.DoorRightClosed:
 					EnemySFX.stream = preload("res://assets/audio/Thunk.wav")
 					EnemySFX.play()
 					EnemyAI.Giggly["Attacking"] = false
 					EnemyAI.Giggly["Location"] = previous_location
-		elif EnemyAI.Giggly["Move"] and !EnemyAI.Giggly["Attacking"]:
+				else:
+					JumpscareTimer = 0.0
+					EnemyAI.Giggly["Location"] = 18
+		elif EnemyAI.Giggly["Move"]:
 			var giggly = Sprite2D.new()
 			var giggly_path = ""
 			if EnemyAI.Giggly["Tilt"] == false:
