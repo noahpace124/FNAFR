@@ -30,3 +30,7 @@ var VentPowerDrain = 0.1
 var StartingPower = 100
 var CurrentPower = 100
 var HasPower = true
+
+func initializeValues() -> void:
+	Hour = 25
+	StartingPower = 100

@@ -75,8 +75,11 @@ var enemies = []
 
 func InitializeEnemies() -> void:
 	for enemy in enemies:
+		enemy["Wait"] = 0.0
 		enemy["Location"] = enemy["Start"]
 		enemy["LastLocation"] = enemy["Location"]
+		if enemy["Name"] == "Giggly":
+			Giggly["Side"] = "Left"
 
 func MoveCheck() -> void:
 	for enemy in enemies:

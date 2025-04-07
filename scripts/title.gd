@@ -10,13 +10,15 @@ func _ready() -> void:
 	BGChar.frame = char
 
 func _on_start_pressed() -> void:
+	# Reset Global Values
+	Global.initializeValues() 
 	# Set EnemyAI Values
 	EnemyAI.Springy["AI"] = 0
 	EnemyAI.Lovely["AI"] = 0
 	EnemyAI.Sneaky["AI"] = 0
-	EnemyAI.Giggly["AI"] = 20
+	EnemyAI.Giggly["AI"] = 0
 	EnemyAI.Sleepy["AI"] = 0
-	EnemyAI.enemies = [EnemyAI.Giggly, EnemyAI.Sleepy]
+	EnemyAI.enemies = []
 
 	# Start loading the scene
 	ResourceLoader.load_threaded_request(Global.next_scene)
