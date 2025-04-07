@@ -6,7 +6,7 @@ extends Node
 @onready var Cameras = $GUI/Cameras/CamerasBackground
 @onready var camera = $GUI
 @onready var AM = $AM
-@onready var time= $GUI/Time
+@onready var time= $Time
 @onready var timer = $Timer
 @onready var Power = $GUI/Power
 @onready var Jumpscare = $GUI/Jumpscare
@@ -35,6 +35,8 @@ var JumpscareReady = false
 var GigglesSFX = false
 
 var rng = RandomNumberGenerator.new()
+
+var JumpscareTimer = rng.randf_range(4.0, 8.0)
 
 var WindowSpeed = 50
 
@@ -68,7 +70,7 @@ func _ready() -> void:
 	packed_scene = ResourceLoader.load_threaded_get(Global.next_scene)
 
 func _on_timer_timeout() -> void:
-	time.text = str(float(time.text) + 0.1)
+	time.text = "%0.1f" % (float(time.text) + 0.1)
 	#Idle Power
 	Global.CurrentPower -= Global.IdlePowerDrain
 	#Camera Power
@@ -125,17 +127,17 @@ func _on_timer_timeout() -> void:
 	else:
 		Power.text = str(int(Global.CurrentPower)) + "%"
 	#Update Time
-	if float(time.text) == 20.0:
+	if float(time.text) == Global.Hour:
 		AM.text = "1:00 AM"
-	elif float(time.text) == 40.0:
+	elif float(time.text) == 2*Global.Hour:
 		AM.text = "2:00 AM"
-	elif float(time.text) == 60.0:
+	elif float(time.text) == 3*Global.Hour:
 		AM.text = "3:00 AM"
-	elif float(time.text) == 80.0:
+	elif float(time.text) == 4*Global.Hour:
 		AM.text = "4:00 AM"
-	elif float(time.text) == 100.0:
+	elif float(time.text) == 5*Global.Hour:
 		AM.text = "5:00 AM"
-	elif float(time.text) == 120.0:
+	elif float(time.text) == 6*Global.Hour:
 		AM.text = "6:00 AM"
 		get_tree().change_scene_to_packed(packed_scene)
 		Global.next_scene = "res://scenes/title.tscn"
@@ -144,21 +146,34 @@ func _on_timer_timeout() -> void:
 	EnemyAI.MoveCheck()
 
 func HandleEnemies():
+	#Remove Enemies
+	var nodes = $EnemiesLeftDoor.get_children()
+	for node in nodes:
+		node.queue_free()
+	nodes = $EnemiesVent.get_children()
+	for node in nodes:
+		node.queue_free()
+	nodes = $EnemiesRightDoor.get_children()
+	for node in nodes:
+		node.queue_free()
+	nodes = $EnemiesWindow.get_children()
+	for node in nodes:
+		node.queue_free()
+	nodes = $EnemiesOffice.get_children()
+	for node in nodes:
+		node.queue_free()
 	if !EnemyAI.Jumpscaring: #Not in the middle of a jumpscare
-		#Remove Enemies
-		var nodes = $EnemiesLeftDoor.get_children()
-		for node in nodes:
-			node.queue_free()
-		nodes = $EnemiesVent.get_children()
-		for node in nodes:
-			node.queue_free()
-		nodes = $EnemiesRightDoor.get_children()
-		for node in nodes:
-			node.queue_free()
-		nodes = $EnemiesWindow.get_children()
-		for node in nodes:
-			node.queue_free()
-		#Draw Enemies
+		#Sleepy
+		if EnemyAI.Sleepy["Location"] != -1 and EnemyAI.Sleepy["Location"] != 18:
+			var sleepy = Sprite2D.new()
+			sleepy.texture = preload("res://assets/SleepyOffice.png")
+			sleepy.position.y = 350
+			sleepy.position.x = 300
+			$EnemiesOffice.add_child(sleepy)
+			await get_tree().create_timer(rng.randf_range(14.0, 18.0)).timeout
+			if EnemyAI.Sleepy["Location"] != -1:
+				JumpscareTimer = 0.0
+				EnemyAI.Sleepy["Location"] = 18
 		#Giggly
 		if EnemyAI.Giggly["Attack"] and !EnemyAI.Giggly["Attacking"]:
 			EnemyAI.Giggly["Attack"] = false
@@ -170,6 +185,7 @@ func HandleEnemies():
 			await get_tree().create_timer(4.0).timeout
 			if EnemyAI.Giggly["Side"] == "Left":
 				if !Global.DoorLeftClosed:
+					JumpscareTimer = 0.0
 					EnemyAI.Giggly["Location"] = 18
 				elif Global.DoorLeftClosed and Global.DoorRightClosed:
 					Global.CurrentPower -= 5
@@ -184,6 +200,7 @@ func HandleEnemies():
 					EnemyAI.Giggly["Location"] = previous_location
 			elif EnemyAI.Giggly["Side"] == "Right":
 				if !Global.DoorRightClosed:
+					JumpscareTimer = 0.0
 					EnemyAI.Giggly["Location"] = 18
 				elif Global.DoorLeftClosed and Global.DoorRightClosed:
 					Global.CurrentPower -= 5
@@ -250,8 +267,7 @@ func HandleEnemies():
 					$EnemiesRightDoor.add_child(new_enemy)
 			if enemy["Location"] == 18:
 				if !JumpscareReady:
-					var JumpscareWait = rng.randf_range(6.0, 10.0)
-					await get_tree().create_timer(JumpscareWait).timeout
+					await get_tree().create_timer(JumpscareTimer).timeout
 					JumpscareReady = true
 				elif Global.CamerasUp:
 					Global.CamerasUp = false
@@ -262,9 +278,9 @@ func HandleEnemies():
 						Cameras.position.y += CameraSpeed
 						await get_tree().process_frame
 					Global.CamerasJustDown = true
-				else:
-					Global.CameraCanPan = false
+				elif !EnemyAI.Jumpscaring:
 					EnemyAI.Jumpscaring = true
+					Global.CameraCanPan = false
 					var new_enemy = Sprite2D.new()
 					var path = "res://assets/" + enemy["Name"] + "JS.png"
 					new_enemy.texture = load(path)
@@ -279,6 +295,8 @@ func HandleEnemies():
 					await get_tree().create_timer(0.75).timeout
 					#ReActivate Giggles
 					EnemyAI.Giggly["Attacking"] = false
+					#ReActivate Sleepy
+					EnemyAI.Sleepy["Clicked"] = true
 					# Start loading the scene
 					Global.next_scene = "res://scenes/title.tscn"
 					ResourceLoader.load_threaded_request(Global.next_scene)
@@ -288,6 +306,7 @@ func HandleEnemies():
 					# Get the loaded PackedScene
 					packed_scene = ResourceLoader.load_threaded_get(Global.next_scene)
 					get_tree().change_scene_to_packed(packed_scene)
+					return
 
 func _process(_delta: float) -> void:
 	#Enemies

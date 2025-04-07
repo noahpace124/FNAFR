@@ -11,11 +11,12 @@ func _ready() -> void:
 
 func _on_start_pressed() -> void:
 	# Set EnemyAI Values
-	EnemyAI.Springy["AI"] = 6
-	EnemyAI.Lovely["AI"] = 5
-	EnemyAI.Sneaky["AI"] = 4
+	EnemyAI.Springy["AI"] = 0
+	EnemyAI.Lovely["AI"] = 0
+	EnemyAI.Sneaky["AI"] = 0
 	EnemyAI.Giggly["AI"] = 14
-	EnemyAI.enemies = [EnemyAI.Springy, EnemyAI.Lovely, EnemyAI.Sneaky, EnemyAI.Giggly]
+	EnemyAI.Sleepy["AI"] = 16
+	EnemyAI.enemies = [EnemyAI.Springy, EnemyAI.Lovely, EnemyAI.Sneaky, EnemyAI.Giggly, EnemyAI.Sleepy]
 
 	# Start loading the scene
 	ResourceLoader.load_threaded_request(Global.next_scene)

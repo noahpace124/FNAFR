@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://u1x8ha0kn822"]
+[gd_scene load_steps=49 format=3 uid="uid://u1x8ha0kn822"]
 
 [ext_resource type="Texture2D" uid="uid://bho5p2dymnjb5" path="res://assets/office.png" id="1_13f7r"]
 [ext_resource type="Texture2D" uid="uid://d0yuknft3e844" path="res://assets/bg.png" id="1_ncv6x"]
@@ -41,6 +41,10 @@
 [ext_resource type="Texture2D" uid="uid://c65gieeoqq7eb" path="res://assets/Cam12BG.png" id="37_go1k3"]
 [ext_resource type="Texture2D" uid="uid://bpnn7lvtph4gn" path="res://assets/Cam13BG.png" id="38_ie2p0"]
 [ext_resource type="Texture2D" uid="uid://dc4alp5eisluy" path="res://assets/Cam14BG.png" id="39_in2m6"]
+
+[sub_resource type="Theme" id="Theme_a8867"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xr2rx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2gmv"]
 size = Vector2(195, 521.25)
@@ -219,6 +223,8 @@ scale = Vector2(1.25, 1.25)
 texture = ExtResource("1_13f7r")
 offset = Vector2(433, 249)
 
+[node name="EnemiesOffice" type="Node2D" parent="."]
+
 [node name="AM" type="Label" parent="."]
 modulate = Color(0, 0.744309, 0.387766, 1)
 offset_left = 438.0
@@ -226,6 +232,20 @@ offset_top = 330.0
 offset_right = 511.0
 offset_bottom = 360.0
 text = "12:00 AM"
+
+[node name="Time" type="Label" parent="."]
+modulate = Color(1.63645e-06, 0.808187, 1.54018e-06, 1)
+anchors_preset = -1
+anchor_bottom = 0.026
+offset_left = 452.5
+offset_top = 347.5
+offset_right = 562.5
+offset_bottom = 370.5
+scale = Vector2(0.5, 0.5)
+theme = SubResource("Theme_a8867")
+text = "0.0"
+label_settings = SubResource("LabelSettings_xr2rx")
+horizontal_alignment = 2
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, 30)
@@ -243,14 +263,6 @@ autoplay = true
 [node name="OfficeSFX" type="AudioStreamPlayer2D" parent="GUI"]
 
 [node name="EnemySFX" type="AudioStreamPlayer2D" parent="GUI"]
-
-[node name="Time" type="Label" parent="GUI"]
-offset_left = 2.0
-offset_top = -1.0
-offset_right = 42.0
-offset_bottom = 22.0
-scale = Vector2(0.5, 0.5)
-text = "0.0"
 
 [node name="Power" type="Label" parent="GUI"]
 offset_left = 2.0
@@ -274,7 +286,7 @@ scale = Vector2(0.8, 0.8)
 input_pickable = true
 
 [node name="PanLeft" type="CollisionShape2D" parent="GUI/CameraPanLeft"]
-position = Vector2(90, 247.5)
+position = Vector2(88.75, 247.5)
 shape = SubResource("RectangleShape2D_h2gmv")
 debug_color = Color(0, 0, 0, 0.42)
 script = ExtResource("3_w1qng")

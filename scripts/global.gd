@@ -7,6 +7,8 @@ var CameraPan = 0
 
 var SPEED_CHANGE = 4
 
+var Hour = 22.0
+
 var DoorLeftClosed = false
 var DoorRightClosed = false
 var VentClosed = false

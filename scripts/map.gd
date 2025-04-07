@@ -156,6 +156,8 @@ func _process(delta: float) -> void:
 				var new_enemy = Sprite2D.new()
 				var path = "res://assets/" + enemy["Name"] + "Cam1.png"
 				new_enemy.texture = load(path)
+				new_enemy.name = enemy["Name"] + "Cam1"
+				new_enemy.set_script(preload("res://scripts/click.gd"))
 				new_enemy.show_behind_parent = true
 				add_child(new_enemy)
 	elif Global.CameraView == 1:
@@ -166,6 +168,8 @@ func _process(delta: float) -> void:
 				var new_enemy = Sprite2D.new()
 				var path = "res://assets/" + enemy["Name"] + "Cam2.png"
 				new_enemy.texture = load(path)
+				new_enemy.name = enemy["Name"] + "Cam2"
+				new_enemy.set_script(preload("res://scripts/click.gd"))
 				new_enemy.show_behind_parent = true
 				add_child(new_enemy)
 	elif Global.CameraView == 2:
@@ -176,6 +180,8 @@ func _process(delta: float) -> void:
 				var new_enemy = Sprite2D.new()
 				var path = "res://assets/" + enemy["Name"] + "Cam3.png"
 				new_enemy.texture = load(path)
+				new_enemy.name = enemy["Name"] + "Cam3"
+				new_enemy.set_script(preload("res://scripts/click.gd"))
 				new_enemy.show_behind_parent = true
 				add_child(new_enemy)
 	elif Global.CameraView == 3:
@@ -186,6 +192,8 @@ func _process(delta: float) -> void:
 				var new_enemy = Sprite2D.new()
 				var path = "res://assets/" + enemy["Name"] + "Cam4.png"
 				new_enemy.texture = load(path)
+				new_enemy.name = enemy["Name"] + "Cam4"
+				new_enemy.set_script(preload("res://scripts/click.gd"))
 				new_enemy.show_behind_parent = true
 				add_child(new_enemy)
 	elif Global.CameraView == 4:
@@ -196,6 +204,8 @@ func _process(delta: float) -> void:
 				var new_enemy = Sprite2D.new()
 				var path = "res://assets/" + enemy["Name"] + "Cam5.png"
 				new_enemy.texture = load(path)
+				new_enemy.name = enemy["Name"] + "Cam5"
+				new_enemy.set_script(preload("res://scripts/click.gd"))
 				new_enemy.show_behind_parent = true
 				add_child(new_enemy)
 	elif Global.CameraView == 5:
@@ -206,6 +216,8 @@ func _process(delta: float) -> void:
 				var new_enemy = Sprite2D.new()
 				var path = "res://assets/" + enemy["Name"] + "Cam6.png"
 				new_enemy.texture = load(path)
+				new_enemy.name = enemy["Name"] + "Cam6"
+				new_enemy.set_script(preload("res://scripts/click.gd"))
 				new_enemy.show_behind_parent = true
 				add_child(new_enemy)
 	elif Global.CameraView == 6:
@@ -216,6 +228,8 @@ func _process(delta: float) -> void:
 				var new_enemy = Sprite2D.new()
 				var path = "res://assets/" + enemy["Name"] + "Cam7.png"
 				new_enemy.texture = load(path)
+				new_enemy.name = enemy["Name"] + "Cam7"
+				new_enemy.set_script(preload("res://scripts/click.gd"))
 				new_enemy.show_behind_parent = true
 				add_child(new_enemy)
 	elif Global.CameraView == 7:
@@ -226,6 +240,8 @@ func _process(delta: float) -> void:
 				var new_enemy = Sprite2D.new()
 				var path = "res://assets/" + enemy["Name"] + "Cam8.png"
 				new_enemy.texture = load(path)
+				new_enemy.name = enemy["Name"] + "Cam8"
+				new_enemy.set_script(preload("res://scripts/click.gd"))
 				new_enemy.show_behind_parent = true
 				add_child(new_enemy)
 	elif Global.CameraView == 8:
@@ -236,6 +252,8 @@ func _process(delta: float) -> void:
 				var new_enemy = Sprite2D.new()
 				var path = "res://assets/" + enemy["Name"] + "Cam9.png"
 				new_enemy.texture = load(path)
+				new_enemy.name = enemy["Name"] + "Cam9"
+				new_enemy.set_script(preload("res://scripts/click.gd"))
 				new_enemy.show_behind_parent = true
 				add_child(new_enemy)
 	elif Global.CameraView == 9:
@@ -246,6 +264,8 @@ func _process(delta: float) -> void:
 				var new_enemy = Sprite2D.new()
 				var path = "res://assets/" + enemy["Name"] + "Cam10.png"
 				new_enemy.texture = load(path)
+				new_enemy.name = enemy["Name"] + "Cam10"
+				new_enemy.set_script(preload("res://scripts/click.gd"))
 				new_enemy.show_behind_parent = true
 				add_child(new_enemy)
 	elif Global.CameraView == 10:
@@ -256,6 +276,8 @@ func _process(delta: float) -> void:
 				var new_enemy = Sprite2D.new()
 				var path = "res://assets/" + enemy["Name"] + "Cam11.png"
 				new_enemy.texture = load(path)
+				new_enemy.name = enemy["Name"] + "Cam11"
+				new_enemy.set_script(preload("res://scripts/click.gd"))
 				new_enemy.show_behind_parent = true
 				add_child(new_enemy)
 	elif Global.CameraView == 11:
@@ -266,6 +288,8 @@ func _process(delta: float) -> void:
 				var new_enemy = Sprite2D.new()
 				var path = "res://assets/" + enemy["Name"] + "Cam12.png"
 				new_enemy.texture = load(path)
+				new_enemy.name = enemy["Name"] + "Cam12"
+				new_enemy.set_script(preload("res://scripts/click.gd"))
 				new_enemy.show_behind_parent = true
 				add_child(new_enemy)
 	elif Global.CameraView == 12:
@@ -276,6 +300,8 @@ func _process(delta: float) -> void:
 				var new_enemy = Sprite2D.new()
 				var path = "res://assets/" + enemy["Name"] + "Cam13.png"
 				new_enemy.texture = load(path)
+				new_enemy.name = enemy["Name"] + "Cam13"
+				new_enemy.set_script(preload("res://scripts/click.gd"))
 				new_enemy.show_behind_parent = true
 				add_child(new_enemy)
 	elif Global.CameraView == 13:
@@ -286,6 +312,8 @@ func _process(delta: float) -> void:
 				var new_enemy = Sprite2D.new()
 				var path = "res://assets/" + enemy["Name"] + "Cam14.png"
 				new_enemy.texture = load(path)
+				new_enemy.name = enemy["Name"] + "Cam14"
+				new_enemy.set_script(preload("res://scripts/click.gd"))
 				new_enemy.show_behind_parent = true
 				add_child(new_enemy)
 	CamNum.text = "Cam " + str(Global.CameraView + 1)
